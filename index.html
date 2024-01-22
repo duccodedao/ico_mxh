@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Sắp xếp các thành phần theo chiều dọc */
+            align-items: center;  /* Căn chỉnh các thành phần theo trục ngang */
+            justify-content: flex-start; /* Bắt đầu từ đỉnh của trang */
+            height: 100vh; /* Chiều cao 100% của viewport */
+            margin: 0;
+        }
+        .notifications-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Khoảng cách giữa các thông báo */
+            flex-wrap: wrap; /* Cho phép các thông báo xuống dòng khi cần thiết */
+        }
+        .notification {
+            border: 1px solid #ddd;
+            padding: 15px;
+            display: flex;  /* Sử dụng flexbox để căn chỉnh các thành phần */
+            align-items: center;  /* Căn chỉnh các thành phần theo trục dọc */
+            max-width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho khung thông báo */
+            opacity: 0; /* Ban đầu ẩn */
+            animation: fadeIn 1s ease-out forwards, gradientChange 4s linear infinite alternate; /* Sử dụng keyframe animation */
+            background: linear-gradient(135deg, #3498db, #e74c3c); /* Gradient màu đầu tiên */
+            background-size: 200% 200%; /* Kích thước lớn hơn để tạo hiệu ứng chuyển động */
+            width: 100%; /* Chiều rộng 100% của viewport */
+            border-radius: 10px; /* Góc tròn cho khung thông báo */
+        }
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Làm hình tròn cho ảnh đại diện */
+            object-fit: cover;
+            margin-right: 15px;  /* Khoảng cách giữa ảnh và nội dung thông báo */
+        }
+        .content {
+            flex: 1; /* Đảm bảo nội dung có thể mở rộng theo chiều ngang */
+            text-align: left; /* Căn chỉnh văn bản sang trái */
+        }
+        .author {
+            font-weight: bold; /* In đậm tên người thông báo */
+        }
+        .read-more {
+            margin-top: 10px; /* Khoảng cách giữa nội dung và nút "Xem thêm" */
+        }
+        .message-btn {
+            padding: 8px 15px;
+            background-color: #fff;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        .message-btn img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .message-btn:hover {
+            background-color: #2980b9;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px); /* Di chuyển từ trên xuống */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* Di chuyển đến vị trí bình thường */
+            }
+        }
+
+        @keyframes gradientChange {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="notifications-container">
+        <div class="notification">
+            <img src="https://duccodedao.github.io/code/images/emm/bMASS-removebg-preview.png" alt="Avatar" class="avatar">
+            <div class="content">
+                <p class="author">Sơn Lý Hồng Đức</p>
+                <h3>Update QR Code banking</h3>
+                <p class="timestamp">January 22, 2024 - 15:30</p>
+                <div class="read-more">
+                    <button class="message-btn" onclick="redirectTo('https://www.sonlyhongduc.online/bank/qr-code')">
+                        <img src="https://duccodedao.github.io/ico_mxh/xx.png" alt="Small Icon"> Xem thêm
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="notification">
+            <img src="https://duccodedao.github.io/code/images/emm/bMASS-removebg-preview.png" alt="Avatar" class="avatar">
+            <div class="content">
+                <p class="author">Sơn Lý Hồng Đức</p>
+                <h3>Update chuyển đổi file</h3>
+                <p class="timestamp">January 22, 2024 - 15:30</p>
+                <div class="read-more">
+                    <button class="message-btn" onclick="redirectTo('https://www.sonlyhongduc.online/tienich/Refiles')">
+                        <img src="https://duccodedao.github.io/ico_mxh/xx.png" alt="Small Icon"> Xem thêm
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thêm thông báo mới -->
+        <div class="notification">
+            <img src="https://duccodedao.github.io/code/images/emm/bMASS-removebg-preview.png" alt="Avatar" class="avatar">
+            <div class="content">
+                <p class="author">Sơn Lý Hồng Đức</p>
+                <h3>Trang cá nhân</h3>
+                <p class="timestamp">January 22, 2024 - 15:30</p>
+                <div class="read-more">
+                    <button class="message-btn" onclick="redirectTo('https://www.facebook.com/100015471603158/')">
+                        <img src="https://duccodedao.github.io/ico_mxh/fb.png" alt="Small Icon"> Facebook
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="notification">
+            <img src="https://duccodedao.github.io/code/images/emm/bMASS-removebg-preview.png" alt="Avatar" class="avatar">
+            <div class="content">
+                <p class="author">Sơn Lý Hồng Đức</p>
+                <h3>Liên hệ qua Messenger</h3>
+                <p class="timestamp">January 22, 2024 - 15:30</p>
+                <div class="read-more">
+                    <button class="message-btn" onclick="redirectTo('https://m.me/100015471603158?text=Anhhh Đức đẹp traii số 1 thế giới')">
+                        <img src="https://duccodedao.github.io/ico_mxh/mess.jpg" alt="Small Icon"> Messenger
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="notification">
+            <img src="https://duccodedao.github.io/code/images/emm/bMASS-removebg-preview.png" alt="Avatar" class="avatar">
+            <div class="content">
+                <p class="author">Sơn Lý Hồng Đức</p>
+                <h3>Liên hệ qua Zalo</h3>
+                <p class="timestamp">January 22, 2024 - 15:30</p>
+                <div class="read-more">
+                    <button class="message-btn" onclick="redirectTo('https://zalo.me/0939262443?text=Anhhh Đức đẹp traii số 1 thế giới')">
+                        <img src="https://duccodedao.github.io/ico_mxh/zalo-icon.png" alt="Small Icon"> Zalo
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="notification">
+            <img src="https://duccodedao.github.io/code/images/emm/bMASS-removebg-preview.png" alt="Avatar" class="avatar">
+            <div class="content">
+                <p class="author">Sơn Lý Hồng Đức</p>
+                <h3>Liên hệ qua số điện thoại</h3>
+                <p class="timestamp">January 22, 2024 - 15:30</p>
+                <div class="read-more">
+                    <button class="message-btn" onclick="redirectTo('tel:0939262443')">
+                        <img src="https://duccodedao.github.io/ico_mxh/call.jpg" alt="Small Icon"> Điện thoại
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redirectTo(url) {
+            // Chuyển hướng đến đường dẫn đã cho
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
